@@ -13,6 +13,25 @@
 
 ---
 
+## 環境
+- Windows11
+- IntelliJ IDEA Community Edition: 2024-3
+- Java SDK: Amazon Corret 21.0.5
+- SpringBoot: 3.4.0
+- Maven: 3.9.9
+- MySQL: 8.0.40
+- Amazon Cognito
+
+## 依存パッケージ
+- Spring Web
+- Spring Data JPA
+- MySQL Driver
+- Spring Boot Dev Tools
+- Validation
+- OAuth2 Resource Server
+- OAuth2 Client
+- Spring Security
+
 ## ディレクトリ構成
 ![image](https://github.com/user-attachments/assets/7d115616-7631-49d5-9c4c-e39a66bc0140)
 
@@ -76,13 +95,6 @@ public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 `schema.sql` と `data.sql` を用いてデータベーススキーマを作成してください。
 
 ---
-
-### 4. アプリケーションの起動
-以下のコマンドでアプリケーションを起動します。
-
-```bash
-./mvnw spring-boot:run
-```
 
 
 # 起動方法
