@@ -14,47 +14,8 @@
 ---
 
 ## ディレクトリ構成
-C:.
-├─java
-│  └─com
-│      └─example
-│          └─cognito_qiita
-│              │  CognitoQiitaApplication.java
-│              │
-│              ├─config
-│              │      SecurityConfig.java
-│              │
-│              ├─controller
-│              │      AuthController.java
-│              │      UserController.java
-│              │
-│              ├─dto
-│              │      OAuth2LoginResponseDTO.java
-│              │      UserDTO.java
-│              │
-│              ├─entity
-│              │      User.java
-│              │
-│              ├─exception
-│              │      UserNotFoundException.java
-│              │      UserNotFoundExceptionHandler.java
-│              │
-│              ├─repository
-│              │      UserRepository.java
-│              │
-│              └─service
-│                      UserService.java
-│
-└─resources
-│  application-develop.properties
-│  application.properties
-│  application.yaml
-│  auth-config-develop.properties
-│  data.sql
-│  schema.sql
-│
-├─static
-└─templates
+![image](https://github.com/user-attachments/assets/7d115616-7631-49d5-9c4c-e39a66bc0140)
+
 
 
 ---
@@ -97,6 +58,7 @@ public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
     return http.build();
 }
+```
 
 ## セットアップ手順
 
@@ -120,6 +82,7 @@ public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
 ```bash
 ./mvnw spring-boot:run
+```
 
 
 # 起動方法
