@@ -2,8 +2,6 @@
 
 このリポジトリでは、Amazon Cognito を活用して自作アプリのバックエンド API を保護するための認証機能を実装しています。
 
----
-
 ## 主な機能
 
 ### 1. 認証フロー
@@ -11,7 +9,6 @@
 - ログイン画面で認証情報を入力すると、**ID トークン**と**ユーザー ID**がレスポンスボディとして返されます。
 - 次回以降のリクエストでは、この**ID トークン**を `Authorization` ヘッダーに含め、**ユーザー ID**をパスパラメータやクエリパラメータに加えてリクエストすることで、個別のユーザーに応じたサービスを提供できます。
 
----
 
 ## 環境
 - Windows11
@@ -36,8 +33,6 @@
 ![image](https://github.com/user-attachments/assets/7d115616-7631-49d5-9c4c-e39a66bc0140)
 
 
-
----
 
 ## 主要な認証実装
 
@@ -81,23 +76,9 @@ public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
 ## セットアップ手順
 
-### 1. 依存関係のインストール
-このプロジェクトは Spring Boot を使用しています。Maven または Gradle を利用して依存関係をインストールしてください。
-
----
-
 ### 2. プロパティの設定
 `application.properties` または `application.yaml` に必要な Cognito 設定情報を入力してください。
 
----
-
-### 3. データベースの準備
-`schema.sql` と `data.sql` を用いてデータベーススキーマを作成してください。
-
----
-
-
-# 起動方法
 ![image](https://github.com/user-attachments/assets/4e6a8aa8-e18e-45b8-af5d-07058f7a30fe)
 ![image](https://github.com/user-attachments/assets/5874ab57-3f1b-40db-a3ae-353d8ded58f0)
 ![image](https://github.com/user-attachments/assets/219e9fc7-68cf-4a2c-94cc-72cbbc3e6ac3)
@@ -106,10 +87,10 @@ public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 # 使用方法
 認証されていない状態で API エンドポイントにリクエストを送信すると、ログイン画面にリダイレクトされます。
 
-ログイン後、取得したIDトークンを以下の形式でリクエストに含めて送信してください。
+ログイン後、リクエストボディから取得したIDトークンを以下の形式でリクエストに含めて送信してください。
 ```
 Authorization: Bearer <ID_TOKEN>
 ```
-必要に応じて、ユーザーID をリクエストパラメータとして指定します。
+必要に応じて、ユーザーID をリクエストパラメータとして指定してください。
 
 
