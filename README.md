@@ -76,12 +76,33 @@ public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
 ## セットアップ手順
 
-### 2. プロパティの設定
-`application.properties` または `application.yaml` に必要な Cognito 設定情報を入力してください。
+### 1. DBプロパティの設定
+`resource`配下の`appllication-develop.properties`に各DBプロパティを設定してください。（動かすだけであれば直打ちでも問題ありません。実際に公開する場合は環境変数に設定することをおすすめします。）
+```java
+spring.datasource.url=${SPRING_DATASOURCE_URL}
+spring.datasource.username=${SPRING_DATASOURCE_USERNAME}
+spring.datasource.password=${SPRING_DATASOURCE_PASSWORD}
+```
 
-![image](https://github.com/user-attachments/assets/4e6a8aa8-e18e-45b8-af5d-07058f7a30fe)
+### 2. Cognitoプロパティの設定
+`resource`配下に`auth-config-develop.properties`を作成し、各Cognitoプロパティを設定してください。（動かすだけであれば直打ちでも問題ありません。実際に公開する場合は環境変数に設定することをおすすめします。）
+```java
+auth.clientId=${CLIENT_ID} // クライアントID
+auth.clientSecret=${CRIENT_SERCRET} // クライアントシークレット
+auth.jwk-set-uri=${JWK_SET_URI} // トークン署名キーURL
+auth.issuer-uri=${ISSURE_URI} // トークン署名キーURLの/.well-known/jwk.jsonを削除したもの
+auth.redirect-uri=${REDIRECT_URI} // 許可されているコールバックURL（Cognitoで自分が設定したもの）
+```
+### 3.メインクラスの設定
+Run> Debug Configurations> Add new ConfigurationからApplicationを選択し、`Name`に任意の名前、`Main Class`に`CognitoQiitaApplication`を入力してください。
+
 ![image](https://github.com/user-attachments/assets/5874ab57-3f1b-40db-a3ae-353d8ded58f0)
+
+.envに環境変数を記載している場合は`Environment Variables`に.envへのパスを設定してください。
 ![image](https://github.com/user-attachments/assets/219e9fc7-68cf-4a2c-94cc-72cbbc3e6ac3)
+
+### 4. 実行
+内容を適用して、画面右上の▷を押して実行してください。
 ![image](https://github.com/user-attachments/assets/bd45f963-8cf5-4794-835a-2b962919f890)
 
 # 使用方法
