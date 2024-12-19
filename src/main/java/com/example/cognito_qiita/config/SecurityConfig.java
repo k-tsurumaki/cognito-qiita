@@ -1,6 +1,5 @@
 package com.example.cognito_qiita.config;
 
-import com.example.cognito_qiita.dto.OAuth2LoginResponseDTO;
 import com.example.cognito_qiita.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -68,11 +67,8 @@ public class SecurityConfig {
 			// ユーザーIDをDBに保存
 			Long userId = userService.createUser(username, email);
 
-			// DTOを使ってレスポンスを作成
-			OAuth2LoginResponseDTO responseDTO = new OAuth2LoginResponseDTO(idToken, userId);
-
 			// JSON形式でレスポンスボディに書き込む
-			writeJsonResponse(response, responseDTO);
+			writeJsonResponse(response, idToken, userId);
 
 			// ステータスコードを設定
 			response.setStatus(HttpServletResponse.SC_OK);
@@ -83,10 +79,10 @@ public class SecurityConfig {
 		}
 	}
 
-	private void writeJsonResponse(HttpServletResponse response, OAuth2LoginResponseDTO responseDTO) throws IOException {
+	private void writeJsonResponse(HttpServletResponse response, String idToken, Long userId) throws IOException {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		String jsonResponse = String.format("{\"idToken\": \"%s\", \"userId\": %d}", responseDTO.getIdToken(), responseDTO.getUserId());
+		String jsonResponse = String.format("{\"idToken\": \"%s\", \"userId\": %d}", idToken, userId);
 		response.getWriter().write(jsonResponse);
 	}
 }
