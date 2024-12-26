@@ -2,6 +2,9 @@
 
 このリポジトリでは、Amazon Cognito を活用して自作アプリのバックエンド API を保護するための認証機能を実装しています。
 
+## 投稿記事
+https://qiita.com/k_tsurumaki/items/971a6119177cbd8bbb9f
+
 ## 主な機能
 
 ### 1. 認証フロー
